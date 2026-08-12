@@ -1,5 +1,5 @@
 %% Persian-compatible Awesome CV derivative for XeLaTeX / TeX Live 2025
-\ProvidesClass{awesome-cv}[2026/08/12 v1.9 Persian-compatible Awesome CV]
+\ProvidesClass{awesome-cv}[2026/08/12 v2.0 Persian-compatible Awesome CV]
 \NeedsTeXFormat{LaTeX2e}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
@@ -17,16 +17,19 @@
 \geometry{left=2cm,top=1.5cm,right=2cm,bottom=2cm,footskip=.5cm}
 \pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
 
-% Seyed-inspired dark green visual identity
-\definecolor{awesome-green}{HTML}{14532D}
-\definecolor{awesome-green-light}{HTML}{166534}
+% Seyed-inspired refined green visual identity
+% Slightly lighter than the previous dark green while remaining academic and restrained.
+\definecolor{awesome-green}{HTML}{1B6B45}
+\definecolor{awesome-green-light}{HTML}{2A7A55}
 \definecolor{darktext}{HTML}{26332B}
 \definecolor{text}{HTML}{374151}
 \definecolor{graytext}{HTML}{667085}
 \definecolor{lighttext}{HTML}{98A2B3}
 \colorlet{awesome}{awesome-green}
 
-% Explicit font faces prevent XeLaTeX from requesting unavailable bx/it shapes.
+% Persian/Arabic script font. Persian is written with the Arabic-derived script,
+% so a Persian-capable Arabic-script font is appropriate. Latin technical terms
+% are explicitly typeset with the Latin font using \lr{...}.
 \settextfont[
   BoldFont={Noto Sans Arabic Bold},
   ItalicFont={Noto Sans Arabic},
@@ -37,7 +40,8 @@
 
 \newcommand*{\headerfont}{\rmfamily}\newcommand*{\headerfontlight}{\rmfamily}
 \newcommand*{\footerfont}{\rmfamily}\newcommand*{\bodyfont}{\rmfamily}\newcommand*{\bodyfontlight}{\rmfamily}
-\newcommand*{\headerfirstnamestyle}[1]{{\fontsize{30pt}{34pt}\selectfont\headerfontlight\color{awesome}#1}}
+% The first name is intentionally bold and green as requested.
+\newcommand*{\headerfirstnamestyle}[1]{{\fontsize{30pt}{34pt}\selectfont\headerfont\bfseries\color{awesome}#1}}
 \newcommand*{\headerlastnamestyle}[1]{{\fontsize{30pt}{34pt}\selectfont\headerfont\bfseries\color{text}#1}}
 \newcommand*{\headerpositionstyle}[1]{{\fontsize{9pt}{12pt}\selectfont\bodyfont\bfseries\color{awesome}#1}}
 \newcommand*{\headersocialstyle}[1]{{\fontsize{7.5pt}{10pt}\selectfont\bodyfont\color{text}#1}}
