@@ -1,15 +1,13 @@
 %% Persian-compatible Awesome CV derivative
 %% Rebuilt for XeLaTeX / TeX Live 2025.
-%% The original 2017 class depended on the legacy FontAwesome package;
-%% this version removes that dependency so Persian documents do not inherit
-%% duplicate-command and missing-glyph errors.
+%% Removes the legacy FontAwesome dependency that conflicts with modern
+%% XeLaTeX/xepersian installations and can produce missing-glyph rectangles.
 \ProvidesClass{awesome-cv}[2026/08/12 v1.7 Persian-compatible Awesome CV]
 \NeedsTeXFormat{LaTeX2e}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
 \LoadClass{article}
 
-% Core packages
 \RequirePackage{ifxetex}
 \ifxetex\else
   \ClassError{awesome-cv}{This class requires XeLaTeX}{Compile the document with XeLaTeX, not pdfLaTeX.}
@@ -26,13 +24,11 @@
 \RequirePackage{hyperref}
 \RequirePackage{etoolbox}
 
-% Layout
 \geometry{left=2cm,top=1.5cm,right=2cm,bottom=2cm,footskip=.5cm}
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
 
-% Colors
 \definecolor{white}{HTML}{FFFFFF}
 \definecolor{black}{HTML}{000000}
 \definecolor{darkgray}{HTML}{333333}
@@ -52,14 +48,13 @@
 \definecolor{awesome-darknight}{HTML}{131A28}
 \colorlet{awesome}{awesome-skyblue}
 
-% Font hooks. The document can override these with fontspec/xepersian.
+% Font hooks; the document sets the actual Persian and Latin fonts.
 \newcommand*{\headerfont}{\rmfamily}
 \newcommand*{\headerfontlight}{\rmfamily}
 \newcommand*{\footerfont}{\rmfamily}
 \newcommand*{\bodyfont}{\rmfamily}
 \newcommand*{\bodyfontlight}{\rmfamily}
 
-% Styles
 \newcommand*{\headerfirstnamestyle}[1]{{\fontsize{30pt}{34pt}\selectfont\headerfontlight\color{awesome}#1}}
 \newcommand*{\headerlastnamestyle}[1]{{\fontsize{30pt}{34pt}\selectfont\headerfont\bfseries\color{text}#1}}
 \newcommand*{\headerpositionstyle}[1]{{\fontsize{9pt}{12pt}\selectfont\bodyfont\bfseries\color{awesome}#1}}
@@ -90,25 +85,27 @@
 \newcommand*{\twitter}[1]{\def\@twitter{#1}}
 \newcommand*{\extrainfo}[1]{\def\@extrainfo{#1}}
 \renewcommand*{\quote}[1]{\def\@quote{#1}}
-
 \newcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 \newcommand{\acvHeaderNameDelim}{\space}
 \newcommand{\acvHeaderAfterNameSkip}{2mm}
 
-% Header: no FontAwesome dependency; text remains selectable and accessible.
+% Header. FontAwesome is intentionally not used: the old package is the source
+% of the duplicate \FA error and the missing-glyph rectangles.
 \newcommand*{\makecvheader}[1][C]{%
   \begin{center}
     \headerfirstnamestyle{\@firstname}\acvHeaderNameDelim\headerlastnamestyle{\@lastname}\par
     \vspace{\acvHeaderAfterNameSkip}
-    \ifdefined\@position{\headerpositionstyle{\@position}\par}{}%
+    \ifdefined\@position
+      \headerpositionstyle{\@position}\par
+    \fi
     \vspace{1mm}
     \headersocialstyle{%
-      \ifdefined\@mobile{\@mobile}{}%
-      \ifdefined\@email{\acvHeaderSocialSep\href{mailto:\@email}{\@email}}{}%
-      \ifdefined\@homepage{\acvHeaderSocialSep\href{https://\@homepage}{\@homepage}}{}%
-      \ifdefined\@linkedin{\acvHeaderSocialSep\href{https://www.linkedin.com/in/\@linkedin}{\@linkedin}}{}%
-      \ifdefined\@github{\acvHeaderSocialSep\href{https://github.com/\@github}{\@github}}{}%
-      \ifdefined\@extrainfo{\acvHeaderSocialSep\@extrainfo}{}%
+      \ifdefined\@mobile\@mobile\fi
+      \ifdefined\@email\acvHeaderSocialSep\href{mailto:\@email}{\@email}\fi
+      \ifdefined\@homepage\acvHeaderSocialSep\href{https://\@homepage}{\@homepage}\fi
+      \ifdefined\@linkedin\acvHeaderSocialSep\href{https://www.linkedin.com/in/\@linkedin}{\@linkedin}\fi
+      \ifdefined\@github\acvHeaderSocialSep\href{https://github.com/\@github}{\@github}\fi
+      \ifdefined\@extrainfo\acvHeaderSocialSep\@extrainfo\fi
     }\par
   \end{center}
   \vspace{2mm}
@@ -127,7 +124,7 @@
 }
 \newcommand{\cvsubsection}[1]{\vspace{2mm}\subsectionstyle{#1}\par}
 
-% CV entries
+% Entries
 \newenvironment{cventries}{\begin{center}}{\end{center}}
 \newcommand*{\cventry}[5]{%
   \vspace{2mm}
@@ -149,7 +146,7 @@
     \setlength{\parskip}{0pt}
 }{\end{itemize}}
 
-% Compatibility environments/commands used by Awesome-CV templates
+% Compatibility environments
 \newenvironment{cvparagraph}{\vspace{2mm}\descriptionstyle}{\par\vspace{2mm}}
 \newenvironment{cvsubentries}{\begin{center}}{\end{center}}
 \newcommand*{\cvsubentry}[4]{\subsectionstyle{#2}\hfill\entrydatestyle{#3}\par\entrypositionstyle{#1}\par\descriptionstyle{#4}\par}
