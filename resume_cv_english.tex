@@ -1,6 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% English CV / Cross-check version
-% Compile with XeLaTeX
+% English CV / Leadership cross-check version
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %!TEX TS-program = xelatex
 %!TEX encoding = UTF-8 Unicode
@@ -8,7 +7,6 @@
 \documentclass[11pt,a4paper]{awesome-cv}
 \geometry{left=2cm,top=1.5cm,right=2cm,bottom=2cm,footskip=.5cm}
 
-% English document: use Roboto for all Latin text and digits.
 \setmainfont{Roboto}
 \setsansfont{Roboto}
 \setmonofont{Roboto Mono}
@@ -17,9 +15,6 @@
 \setdigitfont{Roboto}
 
 \colorlet{awesome}{awesome-green}
-
-% This is the English document: use English header labels instead of the
-% Persian defaults defined in the shared class file.
 \renewcommand{\linkedinlabel}{LinkedIn}
 \renewcommand{\scholarlabel}{Google Scholar}
 \renewcommand{\emaillabel}{Email}
@@ -30,18 +25,20 @@
 \email{ma.hashemi.786@gmail.com}
 % \homepage{scholar.google.com/citations?user=QPPohkgAAAAJ&hl=en}
 \linkedin{seyedmohammadabuzar}
-\position{AI Research Leader | Agentic AI Development | Research, Teaching \& Curriculum}
+\position{AI Researcher | Agentic AI | Research, Teaching \& Curriculum}
 \makecvfooter{\today}{Seyed Mohammad Abuzar, Hashemi~~~·~~~Résumé}{\thepage}
 
 \begin{document}
 \makecvheader
 
+% Evidence-first structure: impact before chronology.
 \input{cv-sections-en/summary.tex}
-\input{cv-sections-en/skills.tex}
+\input{cv-sections-en/achievements.tex}
 \input{cv-sections-en/experience.tex}
-\input{cv-sections-en/education.tex}
 \input{cv-sections-en/teaching.tex}
 \input{cv-sections-en/publications.tex}
 \input{cv-sections-en/extracurricular.tex}
+\input{cv-sections-en/education.tex}
+\input{cv-sections-en/skills.tex}
 
 \end{document}
