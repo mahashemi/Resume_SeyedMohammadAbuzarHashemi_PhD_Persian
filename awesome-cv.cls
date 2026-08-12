@@ -43,7 +43,7 @@
 \newcommand*{\headerfirstnamestyle}[1]{{\fontsize{30pt}{34pt}\selectfont\headerfont\bfseries\color{awesome}#1}}
 \newcommand*{\headerlastnamestyle}[1]{{\fontsize{30pt}{34pt}\selectfont\headerfont\bfseries\color{text}#1}}
 \newcommand*{\headerpositionstyle}[1]{{\fontsize{9pt}{12pt}\selectfont\bodyfont\bfseries\color{awesome}#1}}
-\newcommand*{\headersocialstyle}[1]{{\fontsize{7.5pt}{10pt}\selectfont\bodyfont\color{text}#1}}
+\newcommand*{\headersocialstyle}[1]{{\fontsize{7pt}{9pt}\selectfont\bodyfont\color{text}#1}}
 \newcommand*{\footerstyle}[1]{{\fontsize{7.5pt}{9pt}\selectfont\footerfont\color{lighttext}#1}}
 \newcommand*{\sectionstyle}[1]{{\fontsize{16pt}{20pt}\selectfont\bodyfont\bfseries\color{awesome}#1}}
 \newcommand*{\subsectionstyle}[1]{{\fontsize{12pt}{15pt}\selectfont\bodyfont\bfseries\color{awesome}#1}}
@@ -63,7 +63,7 @@
 \newcommand*{\github}[1]{\def\@github{#1}}\newcommand*{\linkedin}[1]{\def\@linkedin{#1}}
 \newcommand*{\twitter}[1]{\def\@twitter{#1}}\newcommand*{\extrainfo}[1]{\def\@extrainfo{#1}}
 \renewcommand*{\quote}[1]{\def\@quote{#1}}
-\newcommand{\acvHeaderSocialSep}{\quad\lr{\textbar}\quad}\newcommand{\acvHeaderNameDelim}{\space}\newcommand{\acvHeaderAfterNameSkip}{2mm}
+\newcommand{\acvHeaderSocialSep}{\thinspace\lr{\textbar}\thinspace}\newcommand{\acvHeaderNameDelim}{\space}\newcommand{\acvHeaderAfterNameSkip}{2mm}
 
 % Language-aware header labels: default to Persian; the English document
 % overrides these to their English equivalents before \makecvheader is called.
@@ -82,20 +82,20 @@
 \vspace{2mm}
 \headersocialstyle{%
 \ifdefined\@linkedin
-  \href{https://www.linkedin.com/in/\@linkedin}{\textcolor{awesome}{\faLinkedinIn}\enspace \linkedinlabel: \lr{\@linkedin}}%
+  \href{https://www.linkedin.com/in/\@linkedin}{\textcolor{awesome}{\faLinkedinIn}\thinspace\linkedinlabel:~\lr{\@linkedin}}%
 \fi
 \ifdefined\@homepage
-  \acvHeaderSocialSep\href{https://\@homepage}{\textcolor{awesome}{\faGraduationCap}\enspace \scholarlabel: \lr{seyedmohammadabuzar}}%
+  \acvHeaderSocialSep\href{https://\@homepage}{\textcolor{awesome}{\faGraduationCap}\thinspace\scholarlabel:~\lr{seyedmohammadabuzar}}%
 \fi
 \ifdefined\@email
-  \acvHeaderSocialSep\href{mailto:\@email}{\textcolor{awesome}{\faEnvelope}\enspace \emaillabel: \lr{\@email}}%
+  \acvHeaderSocialSep\href{mailto:\@email}{\textcolor{awesome}{\faEnvelope}\thinspace\emaillabel:~\lr{\@email}}%
 \fi
 \ifdefined\@mobile
-  \acvHeaderSocialSep\textcolor{awesome}{\faPhone}\enspace \mobilelabel: \lr{\@mobile}%
+  \acvHeaderSocialSep\textcolor{awesome}{\faPhone}\thinspace\mobilelabel:~\lr{\@mobile}%
 \fi
 }
 \par\vspace{2.5mm}
-\textcolor{awesome}{\rule{0.82\textwidth}{1pt}}\par
+\textcolor{awesome}{\rule{\textwidth}{1pt}}\par
 \end{center}
 \vspace{3mm}}
 
