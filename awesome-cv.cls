@@ -1,5 +1,5 @@
 %% Persian-compatible Awesome CV derivative for XeLaTeX / TeX Live 2025
-\ProvidesClass{awesome-cv}[2026/08/12 v1.8 Persian-compatible Awesome CV]
+\ProvidesClass{awesome-cv}[2026/08/12 v1.9 Persian-compatible Awesome CV]
 \NeedsTeXFormat{LaTeX2e}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
@@ -26,6 +26,15 @@
 \definecolor{lighttext}{HTML}{98A2B3}
 \colorlet{awesome}{awesome-green}
 
+% Explicit font faces prevent XeLaTeX from requesting unavailable bx/it shapes.
+\settextfont[
+  BoldFont={Noto Sans Arabic Bold},
+  ItalicFont={Noto Sans Arabic},
+  BoldItalicFont={Noto Sans Arabic Bold}
+]{Noto Sans Arabic}
+\setlatintextfont{Roboto}
+\setdigitfont{Noto Sans Arabic}
+
 \newcommand*{\headerfont}{\rmfamily}\newcommand*{\headerfontlight}{\rmfamily}
 \newcommand*{\footerfont}{\rmfamily}\newcommand*{\bodyfont}{\rmfamily}\newcommand*{\bodyfontlight}{\rmfamily}
 \newcommand*{\headerfirstnamestyle}[1]{{\fontsize{30pt}{34pt}\selectfont\headerfontlight\color{awesome}#1}}
@@ -51,12 +60,12 @@
 \newcommand*{\github}[1]{\def\@github{#1}}\newcommand*{\linkedin}[1]{\def\@linkedin{#1}}
 \newcommand*{\twitter}[1]{\def\@twitter{#1}}\newcommand*{\extrainfo}[1]{\def\@extrainfo{#1}}
 \renewcommand*{\quote}[1]{\def\@quote{#1}}
-\newcommand{\acvHeaderSocialSep}{\quad\textbar\quad}\newcommand{\acvHeaderNameDelim}{\space}\newcommand{\acvHeaderAfterNameSkip}{2mm}
+\newcommand{\acvHeaderSocialSep}{\quad\lr{\textbar}\quad}\newcommand{\acvHeaderNameDelim}{\space}\newcommand{\acvHeaderAfterNameSkip}{2mm}
 
 \newcommand*{\makecvheader}[1][C]{%
 \begin{center}\headerfirstnamestyle{\@firstname}\acvHeaderNameDelim\headerlastnamestyle{\@lastname}\par
 \vspace{\acvHeaderAfterNameSkip}\ifdefined\@position\headerpositionstyle{\@position}\par\fi\vspace{1mm}
-\headersocialstyle{\ifdefined\@mobile\@mobile\fi\ifdefined\@email\acvHeaderSocialSep\href{mailto:\@email}{\@email}\fi\ifdefined\@homepage\acvHeaderSocialSep\href{https://\@homepage}{\@homepage}\fi\ifdefined\@linkedin\acvHeaderSocialSep\href{https://www.linkedin.com/in/\@linkedin}{\@linkedin}\fi\ifdefined\@github\acvHeaderSocialSep\href{https://github.com/\@github}{\@github}\fi}\par\end{center}\vspace{2mm}}
+\headersocialstyle{\ifdefined\@mobile\lr{\@mobile}\fi\ifdefined\@email\acvHeaderSocialSep\href{mailto:\@email}{\lr{\@email}}\fi\ifdefined\@homepage\acvHeaderSocialSep\href{https://\@homepage}{\lr{\@homepage}}\fi\ifdefined\@linkedin\acvHeaderSocialSep\href{https://www.linkedin.com/in/\@linkedin}{\lr{\@linkedin}}\fi\ifdefined\@github\acvHeaderSocialSep\href{https://github.com/\@github}{\lr{\@github}}\fi}\par\end{center}\vspace{2mm}}
 \newcommand*{\makecvfooter}[3]{\fancyfoot[L]{\footerstyle{#1}}\fancyfoot[C]{\footerstyle{#2}}\fancyfoot[R]{\footerstyle{#3}}}
 \newcommand{\cvsection}[1]{\vspace{3mm}\par\noindent\sectionstyle{#1}\par\vspace{1mm}\noindent\textcolor{awesome}{\rule{\textwidth}{0.8pt}}\vspace{1mm}}
 \newcommand{\cvsubsection}[1]{\vspace{2mm}\subsectionstyle{#1}\par}
@@ -64,7 +73,6 @@
 \newenvironment{cventries}{\begin{center}}{\end{center}}
 \newcommand*{\cventry}[5]{\vspace{2mm}\noindent\begin{minipage}{0.97\textwidth}\entrytitlestyle{#2}\hfill\entrylocationstyle{#3}\par\entrypositionstyle{#1}\hfill\entrydatestyle{#4}\par\vspace{1mm}\descriptionstyle{#5}\par\end{minipage}\par\vspace{1mm}}
 
-% Avoid tabularx: its body capture conflicts with bidi/xepersian and causes runaway arguments.
 \newenvironment{cvskills}{\begin{list}{}{\setlength{\leftmargin}{0pt}\setlength{\rightmargin}{0pt}\setlength{\labelwidth}{0pt}\setlength{\labelsep}{0pt}\setlength{\itemindent}{0pt}\setlength{\listparindent}{0pt}\setlength{\parsep}{0pt}\setlength{\topsep}{1pt}\setlength{\itemsep}{3pt}}}{\end{list}}
 \newcommand*{\cvskill}[2]{\item\noindent\skilltypestyle{#1}:\enspace\skillsetstyle{#2}}
 \newenvironment{cvitems}{\begin{itemize}[leftmargin=1.8em,rightmargin=0.2em,itemsep=1pt,topsep=1pt,parsep=0pt]\setlength{\parskip}{0pt}}{\end{itemize}}
