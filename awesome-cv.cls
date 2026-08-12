@@ -65,7 +65,14 @@
 \renewcommand*{\quote}[1]{\def\@quote{#1}}
 \newcommand{\acvHeaderSocialSep}{\quad\lr{\textbar}\quad}\newcommand{\acvHeaderNameDelim}{\space}\newcommand{\acvHeaderAfterNameSkip}{2mm}
 
-% Persian labels with visible, typeable Latin identifiers. All visible Latin
+% Language-aware header labels: default to Persian; the English document
+% overrides these to their English equivalents before \makecvheader is called.
+\providecommand{\linkedinlabel}{لینکدین}
+\providecommand{\scholarlabel}{گوگل اسکالر}
+\providecommand{\emaillabel}{ایمیل}
+\providecommand{\mobilelabel}{تلفن}
+
+% Labels with visible, typeable Latin identifiers. All visible Latin
 % material is explicitly LTR; URL targets remain raw for reliable hyperlinks.
 \newcommand*{\makecvheader}[1][C]{%
 \begin{center}
@@ -75,16 +82,16 @@
 \vspace{2mm}
 \headersocialstyle{%
 \ifdefined\@linkedin
-  \href{https://www.linkedin.com/in/\@linkedin}{\textcolor{awesome}{\faLinkedinIn}\enspace لینکدین: \lr{\@linkedin}}%
+  \href{https://www.linkedin.com/in/\@linkedin}{\textcolor{awesome}{\faLinkedinIn}\enspace \linkedinlabel: \lr{\@linkedin}}%
 \fi
 \ifdefined\@homepage
-  \acvHeaderSocialSep\href{https://\@homepage}{\textcolor{awesome}{\faGraduationCap}\enspace گوگل اسکالر: \lr{seyedmohammadabuzar}}%
+  \acvHeaderSocialSep\href{https://\@homepage}{\textcolor{awesome}{\faGraduationCap}\enspace \scholarlabel: \lr{seyedmohammadabuzar}}%
 \fi
 \ifdefined\@email
-  \acvHeaderSocialSep\href{mailto:\@email}{\textcolor{awesome}{\faEnvelope}\enspace ایمیل: \lr{\@email}}%
+  \acvHeaderSocialSep\href{mailto:\@email}{\textcolor{awesome}{\faEnvelope}\enspace \emaillabel: \lr{\@email}}%
 \fi
 \ifdefined\@mobile
-  \acvHeaderSocialSep\textcolor{awesome}{\faPhone}\enspace تلفن: \lr{\@mobile}%
+  \acvHeaderSocialSep\textcolor{awesome}{\faPhone}\enspace \mobilelabel: \lr{\@mobile}%
 \fi
 }
 \par\vspace{2.5mm}
