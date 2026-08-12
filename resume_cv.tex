@@ -1,50 +1,31 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% رزومه فارسی
-% کامپایل با XeLaTeX
+% رزومه فارسی — قالب سازگار با XeLaTeX
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %!TEX TS-program = xelatex
 %!TEX encoding = UTF-8 Unicode
 
-\documentclass[11pt, a4paper]{awesome-cv}
-\geometry{left=2cm, top=1.5cm, right=2cm, bottom=2cm, footskip=.5cm}
+\documentclass[11pt,a4paper]{awesome-cv}
+\geometry{left=2cm,top=1.5cm,right=2cm,bottom=2cm,footskip=.5cm}
 
-% فونت فارسی، لاتین و ارقام
 \settextfont{Noto Sans Arabic}
 \setlatintextfont{Roboto}
 \setdigitfont{Noto Sans Arabic}
 
-% سازگاری با Awesome-CV و جلوگیری از تعریف مجدد فونت‌های داخلی
-\providecommand{\bodyfont}{\rmfamily}
-\providecommand{\bodyfontlight}{\rmfamily}
-\renewcommand*{\bodyfont}{\rmfamily}
-\renewcommand*{\bodyfontlight}{\rmfamily}
-
-\colorlet{awesome}{awesome-skyblue}
+\colorlet{awesome}{awesome-green}
 \renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
-
-%----------------------------------------------------------------------------------------
-% اطلاعات شخصی
-%----------------------------------------------------------------------------------------
 
 \name{سید محمد}{ابوذر، هاشمی}
 \mobile{(716)-536-7993}
 \email{ma.hashemi.786@gmail.com}
 \homepage{scholar.google.com/citations?user=QPPohkgAAAAJ\&hl=en}
 \linkedin{seyedmohammadabuzar}
-
-\position{رهبر هوش مصنوعی و پژوهش | توسعه هوش مصنوعی عامل‌محور | پژوهش و آموزش}
+\position{رهبر هوش مصنوعی و پژوهش | توسعه هوش مصنوعی عامل‌محور | پژوهش، آموزش و طراحی برنامه درسی}
 
 \makecvfooter{\today}{سید محمد ابوذر، هاشمی~~~·~~~رزومه}{\thepage}
 
-%----------------------------------------------------------------------------------------
 \begin{document}
-
 \makecvheader
 
-%----------------------------------------------------------------------------------------
-% محتوای رزومه
-%----------------------------------------------------------------------------------------
 \input{cv-sections/summary.tex}
 \input{cv-sections/skills.tex}
 \input{cv-sections/experience.tex}
@@ -55,5 +36,3 @@
 \input{cv-sections/family.tex}
 
 \end{document}
-
-% compatibility workflow trigger
