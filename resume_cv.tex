@@ -9,20 +9,12 @@
 \documentclass[11pt, a4paper]{awesome-cv}
 \geometry{left=2cm, top=1.5cm, right=2cm, bottom=2cm, footskip=.5cm}
 
-% The awesome-cv class already loads xepersian.
 \settextfont{Noto Sans Arabic}
 \setlatintextfont{Roboto}
 \setdigitfont{Roboto}
-
-% Use a Persian-capable body font while preserving the original layout.
 \renewcommand*{\bodyfont}{\rmfamily}
 \renewcommand*{\bodyfontlight}{\rmfamily}
 
-% Persian-capable header names.
-\renewcommand*{\headerfirstnamestyle}[1]{{\fontsize{32pt}{1em}\settextfont{Noto Sans Arabic}\color{graytext} #1}}
-\renewcommand*{\headerlastnamestyle}[1]{{\fontsize{32pt}{1em}\settextfont{Noto Sans Arabic}\color{text} #1}}
-
-% Color for highlights
 \colorlet{awesome}{awesome-skyblue}
 \renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 
@@ -30,15 +22,17 @@
 % PERSONAL INFORMATION
 %----------------------------------------------------------------------------------------
 
-\name{محمد ابوزر}{هاشمی}
+% The first name is intentionally separated so Awesome-CV renders
+% "Seyed Mohammad" in the accent color.
+\name{Seyed Mohammad}{Abuzar, Hashemi}
 \mobile{(716)-536-7993}
 \email{ma.hashemi.786@gmail.com}
-% awesome-cv prepends http:// to this field, so do not include a protocol here.
 \homepage{scholar.google.com/citations?user=QPPohkgAAAAJ\&hl=en}
-\linkedin{MohammadAbuzar}
-\position{پژوهشگر هوش مصنوعی}
+\linkedin{seyedmohammadabuzar}
 
-\makecvfooter{\today}{محمد ابوزر هاشمی~~~·~~~رزومه}{\thepage}
+\position{رهبر هوش مصنوعی و پژوهش | توسعه هوش مصنوعی عامل‌محور | پژوهش و آموزش}
+
+\makecvfooter{\today}{Seyed Mohammad Abuzar, Hashemi~~~·~~~رزومه}{\thepage}
 
 %----------------------------------------------------------------------------------------
 \begin{document}
@@ -52,6 +46,7 @@
 \input{cv-sections/skills.tex}
 \input{cv-sections/experience.tex}
 \input{cv-sections/education.tex}
+\input{cv-sections/teaching.tex}
 \input{cv-sections/publications.tex}
 \input{cv-sections/extracurricular.tex}
 \input{cv-sections/family.tex}
