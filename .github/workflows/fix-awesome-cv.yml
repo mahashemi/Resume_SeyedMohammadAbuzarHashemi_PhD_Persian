@@ -1,0 +1,55 @@
+name: Fix Awesome-CV compatibility
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  patch-awesome-cv:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Patch Awesome-CV font definitions
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path('awesome-cv.cls')
+          text = path.read_text(encoding='utf-8')
+
+          replacements = {
+              r'\\newfontfamily\\FA[Path=\\@fontdir]{FontAwesome}':
+                  r'\\let\\FA\\relax\n\\newfontfamily\\FA[Path=\\@fontdir]{FontAwesome}',
+              r'\\newfontfamily\\headerfont[':
+                  r'\\let\\headerfont\\relax\n\\newfontfamily\\headerfont[',
+              r'\\newfontfamily\\headerfontlight[':
+                  r'\\let\\headerfontlight\\relax\n\\newfontfamily\\headerfontlight[',
+          }
+
+          changed = False
+          for old, new in replacements.items():
+              if old in text and new not in text:
+                  text = text.replace(old, new, 1)
+                  changed = True
+
+          if changed:
+              path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Commit compatibility patch
+        run: |
+          if git diff --quiet; then
+            echo "No patch needed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add awesome-cv.cls
+          git commit -m "Fix Awesome-CV font compatibility with TeX Live 2025"
+          git push
