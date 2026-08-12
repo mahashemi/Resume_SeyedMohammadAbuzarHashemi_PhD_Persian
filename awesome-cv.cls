@@ -17,9 +17,9 @@
 \geometry{left=2cm,top=1.5cm,right=2cm,bottom=2cm,footskip=.5cm}
 \pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
 
-% Deep forest-green visual identity: restrained, academic, and unambiguously dark green.
-\definecolor{awesome-green}{HTML}{14532D}
-\definecolor{awesome-green-light}{HTML}{1F6B3E}
+% Single accent green used throughout: close to the original 1B6B45, just a hint darker.
+\definecolor{awesome-green}{HTML}{175B3B}
+\definecolor{awesome-green-light}{HTML}{175B3B}
 \definecolor{darktext}{HTML}{26332B}
 \definecolor{text}{HTML}{374151}
 \definecolor{graytext}{HTML}{667085}
