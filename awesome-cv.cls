@@ -1,5 +1,5 @@
 %% Persian-compatible Awesome CV derivative for XeLaTeX / TeX Live 2025
-\ProvidesClass{awesome-cv}[2026/08/12 v2.0 Persian-compatible Awesome CV]
+\ProvidesClass{awesome-cv}[2026/08/12 v2.1 Persian-compatible Awesome CV]
 \NeedsTeXFormat{LaTeX2e}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
@@ -17,18 +17,18 @@
 \geometry{left=2cm,top=1.5cm,right=2cm,bottom=2cm,footskip=.5cm}
 \pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
 
-% Single accent green used throughout: close to the original 1B6B45, just a hint darker.
-\definecolor{awesome-green}{HTML}{175B3B}
-\definecolor{awesome-green-light}{HTML}{175B3B}
+% Primary academic green: intentionally restrained, but visibly distinct from body text.
+\definecolor{awesome-green}{HTML}{2A6F50}
+\definecolor{awesome-green-light}{HTML}{2A6F50}
 \definecolor{darktext}{HTML}{26332B}
 \definecolor{text}{HTML}{374151}
 \definecolor{graytext}{HTML}{667085}
 \definecolor{lighttext}{HTML}{98A2B3}
 \colorlet{awesome}{awesome-green}
 
-% Persian/Arabic script font. Persian is written with the Arabic-derived script,
-% so a Persian-capable Arabic-script font is appropriate. Latin technical terms
-% are explicitly typeset with the Latin font using \lr{...}.
+% Persian/Arabic-script font for Persian text; Roboto is used only for explicit
+% Latin runs. Keep Latin material inside \lr{...} so bidi never sends it through
+% the Persian font or reverses it unexpectedly.
 \settextfont[
   BoldFont={Noto Sans Arabic Bold},
   ItalicFont={Noto Sans Arabic},
@@ -48,7 +48,7 @@
 \newcommand*{\sectionstyle}[1]{{\fontsize{16pt}{20pt}\selectfont\bodyfont\bfseries\color{awesome}#1}}
 \newcommand*{\subsectionstyle}[1]{{\fontsize{12pt}{15pt}\selectfont\bodyfont\bfseries\color{awesome}#1}}
 \newcommand*{\entrytitlestyle}[1]{{\fontsize{10.5pt}{13pt}\selectfont\bodyfont\bfseries\color{darktext}#1}}
-\newcommand*{\entrypositionstyle}[1]{{\fontsize{8.5pt}{11pt}\selectfont\bodyfont\itshape\bfseries\color{graytext}#1}}
+\newcommand*{\entrypositionstyle}[1]{{\fontsize{8.5pt}{11pt}\selectfont\bodyfont\color{graytext}#1}}
 \newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{10pt}\selectfont\bodyfont\color{graytext}#1}}
 \newcommand*{\entrylocationstyle}[1]{{\fontsize{8.5pt}{11pt}\selectfont\bodyfont\color{awesome}#1}}
 \newcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{12.5pt}\selectfont\bodyfont\color{text}#1}}
@@ -68,7 +68,7 @@
 \newcommand*{\makecvheader}[1][C]{%
 \begin{center}\headerfirstnamestyle{\@firstname}\acvHeaderNameDelim\headerlastnamestyle{\@lastname}\par
 \vspace{\acvHeaderAfterNameSkip}\ifdefined\@position\headerpositionstyle{\@position}\par\fi\vspace{1mm}
-\headersocialstyle{\ifdefined\@mobile\lr{\@mobile}\fi\ifdefined\@email\acvHeaderSocialSep\href{mailto:\@email}{\lr{\@email}}\fi\ifdefined\@homepage\acvHeaderSocialSep\href{https://\@homepage}{\lr{seyedmohammadabuzar scholar}}\fi\ifdefined\@linkedin\acvHeaderSocialSep\href{https://www.linkedin.com/in/\@linkedin}{\lr{\@linkedin}}\fi\ifdefined\@github\acvHeaderSocialSep\href{https://github.com/\@github}{\lr{\@github}}\fi}\par\vspace{2mm}\textcolor{awesome}{\rule{0.32\textwidth}{1pt}}\par\end{center}\vspace{3mm}}
+\headersocialstyle{\ifdefined\@mobile\@mobile\fi\ifdefined\@email\acvHeaderSocialSep\href{mailto:\@email}{\@email}\fi\ifdefined\@homepage\acvHeaderSocialSep\href{https://\@homepage}{\@homepage}\fi\ifdefined\@linkedin\acvHeaderSocialSep\href{https://www.linkedin.com/in/\@linkedin}{\@linkedin}\fi\ifdefined\@github\acvHeaderSocialSep\href{https://github.com/\@github}{\@github}\fi}\par\vspace{2mm}\textcolor{awesome}{\rule{0.32\textwidth}{1pt}}\par\end{center}\vspace{3mm}}
 \newcommand*{\makecvfooter}[3]{\fancyfoot[L]{\footerstyle{#1}}\fancyfoot[C]{\footerstyle{#2}}\fancyfoot[R]{\footerstyle{#3}}}
 \newcommand{\cvsection}[1]{\vspace{3mm}\par\noindent\sectionstyle{#1}\par\vspace{1mm}\noindent\textcolor{awesome}{\rule{\textwidth}{0.8pt}}\vspace{1mm}}
 \newcommand{\cvsubsection}[1]{\vspace{2mm}\subsectionstyle{#1}\par}
