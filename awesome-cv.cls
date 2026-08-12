@@ -17,10 +17,9 @@
 \geometry{left=2cm,top=1.5cm,right=2cm,bottom=2cm,footskip=.5cm}
 \pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
 
-% Seyed-inspired refined green visual identity
-% Slightly lighter than the previous dark green while remaining academic and restrained.
-\definecolor{awesome-green}{HTML}{1B6B45}
-\definecolor{awesome-green-light}{HTML}{2A7A55}
+% Deep forest-green visual identity: restrained, academic, and unambiguously dark green.
+\definecolor{awesome-green}{HTML}{14532D}
+\definecolor{awesome-green-light}{HTML}{1F6B3E}
 \definecolor{darktext}{HTML}{26332B}
 \definecolor{text}{HTML}{374151}
 \definecolor{graytext}{HTML}{667085}
@@ -49,7 +48,7 @@
 \newcommand*{\sectionstyle}[1]{{\fontsize{16pt}{20pt}\selectfont\bodyfont\bfseries\color{awesome}#1}}
 \newcommand*{\subsectionstyle}[1]{{\fontsize{12pt}{15pt}\selectfont\bodyfont\bfseries\color{awesome}#1}}
 \newcommand*{\entrytitlestyle}[1]{{\fontsize{10.5pt}{13pt}\selectfont\bodyfont\bfseries\color{darktext}#1}}
-\newcommand*{\entrypositionstyle}[1]{{\fontsize{8.5pt}{11pt}\selectfont\bodyfont\bfseries\color{graytext}#1}}
+\newcommand*{\entrypositionstyle}[1]{{\fontsize{8.5pt}{11pt}\selectfont\bodyfont\itshape\bfseries\color{graytext}#1}}
 \newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{10pt}\selectfont\bodyfont\color{graytext}#1}}
 \newcommand*{\entrylocationstyle}[1]{{\fontsize{8.5pt}{11pt}\selectfont\bodyfont\color{awesome}#1}}
 \newcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{12.5pt}\selectfont\bodyfont\color{text}#1}}
@@ -69,7 +68,7 @@
 \newcommand*{\makecvheader}[1][C]{%
 \begin{center}\headerfirstnamestyle{\@firstname}\acvHeaderNameDelim\headerlastnamestyle{\@lastname}\par
 \vspace{\acvHeaderAfterNameSkip}\ifdefined\@position\headerpositionstyle{\@position}\par\fi\vspace{1mm}
-\headersocialstyle{\ifdefined\@mobile\lr{\@mobile}\fi\ifdefined\@email\acvHeaderSocialSep\href{mailto:\@email}{\lr{\@email}}\fi\ifdefined\@homepage\acvHeaderSocialSep\href{https://\@homepage}{\lr{seyedmohammadabuzar scholar}}\fi\ifdefined\@linkedin\acvHeaderSocialSep\href{https://www.linkedin.com/in/\@linkedin}{\lr{\@linkedin}}\fi\ifdefined\@github\acvHeaderSocialSep\href{https://github.com/\@github}{\lr{\@github}}\fi}\par\end{center}\vspace{2mm}}
+\headersocialstyle{\ifdefined\@mobile\lr{\@mobile}\fi\ifdefined\@email\acvHeaderSocialSep\href{mailto:\@email}{\lr{\@email}}\fi\ifdefined\@homepage\acvHeaderSocialSep\href{https://\@homepage}{\lr{seyedmohammadabuzar scholar}}\fi\ifdefined\@linkedin\acvHeaderSocialSep\href{https://www.linkedin.com/in/\@linkedin}{\lr{\@linkedin}}\fi\ifdefined\@github\acvHeaderSocialSep\href{https://github.com/\@github}{\lr{\@github}}\fi}\par\vspace{2mm}\textcolor{awesome}{\rule{0.32\textwidth}{1pt}}\par\end{center}\vspace{3mm}}
 \newcommand*{\makecvfooter}[3]{\fancyfoot[L]{\footerstyle{#1}}\fancyfoot[C]{\footerstyle{#2}}\fancyfoot[R]{\footerstyle{#3}}}
 \newcommand{\cvsection}[1]{\vspace{3mm}\par\noindent\sectionstyle{#1}\par\vspace{1mm}\noindent\textcolor{awesome}{\rule{\textwidth}{0.8pt}}\vspace{1mm}}
 \newcommand{\cvsubsection}[1]{\vspace{2mm}\subsectionstyle{#1}\par}
