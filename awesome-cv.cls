@@ -1,5 +1,5 @@
 %% Persian-compatible Awesome CV derivative for XeLaTeX / TeX Live 2025
-\ProvidesClass{awesome-cv}[2026/08/12 v2.2 Persian-compatible Awesome CV]
+\ProvidesClass{awesome-cv}[2026/08/12 v2.3 Persian-compatible Awesome CV]
 \NeedsTeXFormat{LaTeX2e}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
@@ -14,12 +14,13 @@
 \RequirePackage{enumitem}
 \RequirePackage{ragged2e}
 \RequirePackage{hyperref}
+\RequirePackage{fontawesome5}
 \geometry{left=2cm,top=1.5cm,right=2cm,bottom=2cm,footskip=.5cm}
 \pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
 
 % Primary academic green: restrained but visibly distinct from body text.
 \definecolor{awesome-green}{HTML}{2A6F50}
-\definecolor{awesome-green-light}{HTML}{2A6F50}
+\definecolor{awesome-green-light}{HTML}{4B8067}
 \definecolor{darktext}{HTML}{26332B}
 \definecolor{text}{HTML}{374151}
 \definecolor{graytext}{HTML}{667085}
@@ -64,12 +65,33 @@
 \renewcommand*{\quote}[1]{\def\@quote{#1}}
 \newcommand{\acvHeaderSocialSep}{\quad\lr{\textbar}\quad}\newcommand{\acvHeaderNameDelim}{\space}\newcommand{\acvHeaderAfterNameSkip}{2mm}
 
-% All Latin header content is explicitly LTR. URL targets stay raw; only
-% their visible text is wrapped in \lr{...}.
+% Persian labels with visible, typeable Latin identifiers. All visible Latin
+% material is explicitly LTR; URL targets remain raw for reliable hyperlinks.
 \newcommand*{\makecvheader}[1][C]{%
-\begin{center}\headerfirstnamestyle{\@firstname}\acvHeaderNameDelim\headerlastnamestyle{\@lastname}\par
-\vspace{\acvHeaderAfterNameSkip}\ifdefined\@position\headerpositionstyle{\@position}\par\fi\vspace{1mm}
-\headersocialstyle{\ifdefined\@mobile\lr{\@mobile}\fi\ifdefined\@email\acvHeaderSocialSep\href{mailto:\@email}{\lr{\@email}}\fi\ifdefined\@homepage\acvHeaderSocialSep\href{https://\@homepage}{\lr{seyedmohammadabuzar scholar}}\fi\ifdefined\@linkedin\acvHeaderSocialSep\href{https://www.linkedin.com/in/\@linkedin}{\lr{\@linkedin}}\fi\ifdefined\@github\acvHeaderSocialSep\href{https://github.com/\@github}{\lr{\@github}}\fi}\par\vspace{2mm}\textcolor{awesome}{\rule{0.32\textwidth}{1pt}}\par\end{center}\vspace{3mm}}
+\begin{center}
+\headerfirstnamestyle{\@firstname}\acvHeaderNameDelim\headerlastnamestyle{\@lastname}\par
+\vspace{\acvHeaderAfterNameSkip}
+\ifdefined\@position\headerpositionstyle{\@position}\par\fi
+\vspace{2mm}
+\headersocialstyle{%
+\ifdefined\@linkedin
+  \href{https://www.linkedin.com/in/\@linkedin}{\textcolor{awesome}{\faLinkedinIn}\enspace لینکدین: \lr{\@linkedin}}%
+\fi
+\ifdefined\@homepage
+  \acvHeaderSocialSep\href{https://\@homepage}{\textcolor{awesome}{\faGraduationCap}\enspace گوگل اسکالر: \lr{seyedmohammadabuzar}}%
+\fi
+\ifdefined\@email
+  \acvHeaderSocialSep\href{mailto:\@email}{\textcolor{awesome}{\faEnvelope}\enspace ایمیل: \lr{\@email}}%
+\fi
+\ifdefined\@mobile
+  \acvHeaderSocialSep\textcolor{awesome}{\faPhone}\enspace تلفن: \lr{\@mobile}%
+\fi
+}
+\par\vspace{2.5mm}
+\textcolor{awesome}{\rule{0.82\textwidth}{1pt}}\par
+\end{center}
+\vspace{3mm}}
+
 \newcommand*{\makecvfooter}[3]{\fancyfoot[L]{\footerstyle{#1}}\fancyfoot[C]{\footerstyle{#2}}\fancyfoot[R]{\footerstyle{#3}}}
 \newcommand{\cvsection}[1]{\vspace{3mm}\par\noindent\sectionstyle{#1}\par\vspace{1mm}\noindent\textcolor{awesome}{\rule{\textwidth}{0.8pt}}\vspace{1mm}}
 \newcommand{\cvsubsection}[1]{\vspace{2mm}\subsectionstyle{#1}\par}
