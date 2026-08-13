@@ -60,7 +60,7 @@
 \newcommand*{\footerstyle}[1]{{\fontsize{7.5pt}{9pt}\selectfont\footerfont\color{lighttext}#1}}
 \newcommand*{\sectionstyle}[1]{{\fontsize{16pt}{20pt}\selectfont\bodyfont\bfseries\color{awesome}#1}}
 \newcommand*{\subsectionstyle}[1]{{\fontsize{12pt}{15pt}\selectfont\bodyfont\bfseries\color{awesome}#1}}
-\newcommand*{\entrytitlestyle}[1]{{\fontsize{10.5pt}{13pt}\selectfont\bodyfont\bfseries\color{darktext}#1}}
+\newcommand*{\entrytitlestyle}[1]{{\fontsize{11pt}{13.5pt}\selectfont\bodyfont\fontseries{b}\selectfont\color{darktext}#1}}
 \newcommand*{\entrypositionstyle}[1]{{\fontsize{8.5pt}{11pt}\selectfont\bodyfont\color{graytext}#1}}
 \newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{10pt}\selectfont\bodyfont\color{graytext}#1}}
 \newcommand*{\entrylocationstyle}[1]{{\fontsize{8.5pt}{11pt}\selectfont\bodyfont\color{awesome}#1}}
