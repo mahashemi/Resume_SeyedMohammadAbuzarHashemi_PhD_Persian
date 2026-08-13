@@ -1,13 +1,25 @@
 %% Persian-compatible Awesome CV derivative for XeLaTeX / TeX Live 2025
 \ProvidesClass{awesome-cv}[2026/08/12 v2.3 Persian-compatible Awesome CV]
 \NeedsTeXFormat{LaTeX2e}
+\newif\if@cvenglish
+\DeclareOption{english}{\@cvenglishtrue}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
 \LoadClass{article}
 \RequirePackage{ifxetex}
 \ifxetex\else\ClassError{awesome-cv}{This class requires XeLaTeX}{Compile with XeLaTeX.}\fi
 \RequirePackage{fontspec}
-\RequirePackage{xepersian}
+\if@cvenglish
+  % English LTR mode: no xepersian, so bidi never reverses the layout.
+  \setmainfont{Roboto}
+  \setsansfont{Roboto}
+  \setmonofont{Menlo}
+  % \lr / \rl are no-ops in English mode (xepersian is not loaded).
+  \newcommand{\lr}[1]{#1}
+  \newcommand{\rl}[1]{#1}
+\else
+  \RequirePackage{xepersian}
+\fi
 \RequirePackage{geometry}
 \RequirePackage{xcolor}
 \RequirePackage{fancyhdr}
@@ -30,13 +42,14 @@
 % Persian/Arabic-script font for Persian text; Roboto is used for explicit
 % Latin runs. Keep Latin material inside \lr{...} so bidi never sends it
 % through the Persian font or reverses it unexpectedly.
-\settextfont[
-  BoldFont={Noto Sans Arabic Bold},
-  ItalicFont={Noto Sans Arabic},
-  BoldItalicFont={Noto Sans Arabic Bold}
-]{Noto Sans Arabic}
-\setlatintextfont{Roboto}
-\setdigitfont{Noto Sans Arabic}
+\if@cvenglish
+  % English LTR mode: Roboto is the main font (already set above).
+\else
+  % Noto Sans Arabic is a variable font (single file, all weights).
+  \settextfont[UprightFont=*, BoldFont=*, ItalicFont=*, BoldItalicFont=*]{Noto Sans Arabic}
+  \setlatintextfont{Roboto}
+  \setdigitfont{Noto Sans Arabic}
+\fi
 
 \newcommand*{\headerfont}{\rmfamily}\newcommand*{\headerfontlight}{\rmfamily}
 \newcommand*{\footerfont}{\rmfamily}\newcommand*{\bodyfont}{\rmfamily}\newcommand*{\bodyfontlight}{\rmfamily}
