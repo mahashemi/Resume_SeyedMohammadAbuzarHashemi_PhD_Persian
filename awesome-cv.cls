@@ -94,7 +94,7 @@
 \headerfirstnamestyle{\@firstname}\acvHeaderNameDelim\headerlastnamestyle{\@lastname}\par
 \vspace{\acvHeaderAfterNameSkip}
 \ifdefined\@position\headerpositionstyle{\@position}\par\fi
-\vspace{2mm}
+\vspace{0mm}
 \headersocialstyle{%
 \ifdefined\@linkedin
   \href{https://www.linkedin.com/in/\@linkedin}{\textcolor{awesome}{\faLinkedinIn}\thinspace\linkedinlabel:~\lr{\@linkedin}}%
@@ -109,13 +109,13 @@
   \acvHeaderSocialSep\textcolor{awesome}{\faPhone}\thinspace\mobilelabel:~\lr{\@mobile}%
 \fi
 }
-\par\vspace{2.5mm}
-\textcolor{awesome}{\rule{\textwidth}{1pt}}\par
+\par\vspace{-1.0mm}
+\textcolor{awesome}{\rule{\textwidth}{0.1pt}}\par
 \end{center}
 \vspace{3mm}}
 
 \newcommand*{\makecvfooter}[3]{\fancyfoot[L]{\footerstyle{#1}}\fancyfoot[C]{\footerstyle{#2}}\fancyfoot[R]{\footerstyle{#3}}}
-\newcommand{\cvsection}[1]{\vspace{3mm}\par\noindent\sectionstyle{#1}\par\vspace{1mm}\noindent\textcolor{awesome}{\rule{\textwidth}{0.8pt}}\vspace{1mm}}
+\newcommand{\cvsection}[1]{\vspace{3mm}\par\noindent\sectionstyle{#1}\par\vspace{-2mm}\noindent\textcolor{awesome}{\rule{\textwidth}{0.8pt}}\vspace{1mm}}
 \newcommand{\cvsubsection}[1]{\vspace{2mm}\subsectionstyle{#1}\par}
 
 \newenvironment{cventries}{\begin{center}}{\end{center}}
