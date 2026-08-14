@@ -82,10 +82,10 @@
 
 % Language-aware header labels: default to Persian; the English document
 % overrides these to their English equivalents before \makecvheader is called.
-\providecommand{\linkedinlabel}{لینکدین}
-\providecommand{\scholarlabel}{گوگل اسکالر}
-\providecommand{\emaillabel}{ایمیل}
-\providecommand{\mobilelabel}{تلفن}
+% \providecommand{\linkedinlabel}{لینکدین}
+% \providecommand{\scholarlabel}{گوگل اسکالر}
+% \providecommand{\emaillabel}{ایمیل}
+% \providecommand{\mobilelabel}{تلفن}
 
 % Labels with visible, typeable Latin identifiers. All visible Latin
 % material is explicitly LTR; URL targets remain raw for reliable hyperlinks.
@@ -94,28 +94,28 @@
 \headerfirstnamestyle{\@firstname}\acvHeaderNameDelim\headerlastnamestyle{\@lastname}\par
 \vspace{\acvHeaderAfterNameSkip}
 \ifdefined\@position\headerpositionstyle{\@position}\par\fi
-\vspace{2mm}
+\vspace{0mm}
 \headersocialstyle{%
 \ifdefined\@linkedin
-  \href{https://www.linkedin.com/in/\@linkedin}{\textcolor{awesome}{\faLinkedinIn}\thinspace\linkedinlabel:~\lr{\@linkedin}}%
+  \href{https://www.linkedin.com/in/\@linkedin}{\textcolor{awesome}{\faLinkedinIn}\thinspace\lr{\@linkedin}}%
 \fi
 \ifdefined\@homepage
-  \acvHeaderSocialSep\href{https://\@homepage}{\textcolor{awesome}{\faGraduationCap}\thinspace\scholarlabel:~\lr{seyedmohammadabuzar}}%
+  \acvHeaderSocialSep\href{https://\@homepage}{\textcolor{awesome}{\faGraduationCap}\thinspace\lr{seyedmohammadabuzar}}%
 \fi
 \ifdefined\@email
-  \acvHeaderSocialSep\href{mailto:\@email}{\textcolor{awesome}{\faEnvelope}\thinspace\emaillabel:~\lr{\@email}}%
+  \acvHeaderSocialSep\href{mailto:\@email}{\textcolor{awesome}{\faEnvelope}\thinspace\lr{\@email}}%
 \fi
 \ifdefined\@mobile
-  \acvHeaderSocialSep\textcolor{awesome}{\faPhone}\thinspace\mobilelabel:~\lr{\@mobile}%
+  \acvHeaderSocialSep\textcolor{awesome}{\faPhone}\thinspace\lr{\@mobile}%
 \fi
 }
-\par\vspace{2.5mm}
-\textcolor{awesome}{\rule{\textwidth}{1pt}}\par
+\par\vspace{-1.5mm}
+\textcolor{awesome}{\rule{\textwidth}{0.1pt}}\par
 \end{center}
 \vspace{3mm}}
 
 \newcommand*{\makecvfooter}[3]{\fancyfoot[L]{\footerstyle{#1}}\fancyfoot[C]{\footerstyle{#2}}\fancyfoot[R]{\footerstyle{#3}}}
-\newcommand{\cvsection}[1]{\vspace{3mm}\par\noindent\sectionstyle{#1}\par\vspace{1mm}\noindent\textcolor{awesome}{\rule{\textwidth}{0.8pt}}\vspace{1mm}}
+\newcommand{\cvsection}[1]{\vspace{3mm}\par\noindent\sectionstyle{#1}\par\vspace{-2mm}\noindent\textcolor{awesome}{\rule{\textwidth}{0.4pt}}\vspace{1mm}}
 \newcommand{\cvsubsection}[1]{\vspace{2mm}\subsectionstyle{#1}\par}
 
 \newenvironment{cventries}{\begin{center}}{\end{center}}
