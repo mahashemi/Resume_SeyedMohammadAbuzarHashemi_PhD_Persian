@@ -11,10 +11,8 @@
 \RequirePackage{fontspec}
 \if@cvenglish
   % English LTR mode: no xepersian, so bidi never reverses the layout.
-  % Load Roboto directly from the bundled font files (rather than relying on
-  % system font-name resolution) so genuine Bold/Italic faces are always found.
-  \setmainfont{Roboto}[Path=fonts/, Extension=.ttf, UprightFont=*-Regular, BoldFont=*-Bold, ItalicFont=*-Italic, BoldItalicFont=*-BoldItalic]
-  \setsansfont{Roboto}[Path=fonts/, Extension=.ttf, UprightFont=*-Regular, BoldFont=*-Bold, ItalicFont=*-Italic, BoldItalicFont=*-BoldItalic]
+  \setmainfont{Roboto}
+  \setsansfont{Roboto}
   \setmonofont{Menlo}
   % \lr / \rl are no-ops in English mode (xepersian is not loaded).
   \newcommand{\lr}[1]{#1}
@@ -51,7 +49,7 @@
   % so \bfseries would otherwise render identically to regular text.
   % FakeBold synthetically embolens strokes so bold is actually visible.
   \settextfont[UprightFont=*, BoldFont=*, BoldFeatures={FakeBold=1.8}, ItalicFont=*, ItalicFeatures={FakeSlant=0.2}, BoldItalicFont=*, BoldItalicFeatures={FakeBold=1.8,FakeSlant=0.2}]{Noto Sans Arabic}
-  \setlatintextfont{Roboto}[Path=fonts/, Extension=.ttf, UprightFont=*-Regular, BoldFont=*-Bold, ItalicFont=*-Italic, BoldItalicFont=*-BoldItalic]
+  \setlatintextfont{Roboto}
   \setdigitfont{Noto Sans Arabic}
 \fi
 
