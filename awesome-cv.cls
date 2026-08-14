@@ -9,17 +9,6 @@
 \RequirePackage{ifxetex}
 \ifxetex\else\ClassError{awesome-cv}{This class requires XeLaTeX}{Compile with XeLaTeX.}\fi
 \RequirePackage{fontspec}
-\if@cvenglish
-  % English LTR mode: no xepersian, so bidi never reverses the layout.
-  \setmainfont{Roboto}
-  \setsansfont{Roboto}
-  \setmonofont{Menlo}
-  % \lr / \rl are no-ops in English mode (xepersian is not loaded).
-  \newcommand{\lr}[1]{#1}
-  \newcommand{\rl}[1]{#1}
-\else
-  \RequirePackage{xepersian}
-\fi
 \RequirePackage{geometry}
 \RequirePackage{xcolor}
 \RequirePackage{fancyhdr}
@@ -27,6 +16,18 @@
 \RequirePackage{ragged2e}
 \RequirePackage{hyperref}
 \RequirePackage{fontawesome5}
+\if@cvenglish
+  % English LTR mode: no xepersian, so bidi never reverses the layout.
+  \setmainfont{Roboto}
+  \setsansfont{Roboto}
+  % \lr / \rl are no-ops in English mode (xepersian is not loaded).
+  \newcommand{\lr}[1]{#1}
+  \newcommand{\rl}[1]{#1}
+\else
+  % bidi (loaded internally by xepersian) requires xcolor AND hyperref to
+  % already be loaded, so both must come before this line.
+  \RequirePackage{xepersian}
+\fi
 \geometry{left=2cm,top=1.5cm,right=2cm,bottom=2cm,footskip=.5cm}
 \pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
 
@@ -122,7 +123,7 @@
 \newcommand*{\cventry}[5]{\vspace{2mm}\noindent\begin{minipage}{0.97\textwidth}\entrytitlestyle{#2}\hfill\entrylocationstyle{#3}\par\entrypositionstyle{#1}\hfill\entrydatestyle{#4}\par\vspace{1mm}\descriptionstyle{#5}\par\end{minipage}\par\vspace{1mm}}
 \newenvironment{cvskills}{\begin{list}{}{\setlength{\leftmargin}{0pt}\setlength{\rightmargin}{0pt}\setlength{\labelwidth}{0pt}\setlength{\labelsep}{0pt}\setlength{\itemindent}{0pt}\setlength{\listparindent}{0pt}\setlength{\parsep}{0pt}\setlength{\topsep}{1pt}\setlength{\itemsep}{3pt}}}{\end{list}}
 \newcommand*{\cvskill}[2]{\item\noindent\skilltypestyle{#1}:\enspace\skillsetstyle{#2}}
-\newenvironment{cvitems}{\begin{itemize}[leftmargin=1.8em,rightmargin=0.2em,itemsep=1pt,topsep=1pt,parsep=0pt]\setlength{\parskip}{0pt}}{\end{itemize}}
+\newenvironment{cvitems}{\begin{itemize}[leftmargin=1.8em,rightmargin=0.2em,itemsep=1pt,topsep=1pt,parsep=0pt,label=\lr{\textbullet}]\setlength{\parskip}{0pt}}{\end{itemize}}
 \newenvironment{cvparagraph}{\vspace{2mm}\descriptionstyle}{\par\vspace{2mm}}
 \newenvironment{cvsubentries}{\begin{center}}{\end{center}}
 \newcommand*{\cvsubentry}[4]{\subsectionstyle{#2}\hfill\entrydatestyle{#3}\par\entrypositionstyle{#1}\par\descriptionstyle{#4}\par}
