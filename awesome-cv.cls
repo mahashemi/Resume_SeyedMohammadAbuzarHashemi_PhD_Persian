@@ -11,8 +11,10 @@
 \RequirePackage{fontspec}
 \if@cvenglish
   % English LTR mode: no xepersian, so bidi never reverses the layout.
-  \setmainfont{Roboto}
-  \setsansfont{Roboto}
+  % Load Roboto directly from the bundled font files (rather than relying on
+  % system font-name resolution) so genuine Bold/Italic faces are always found.
+  \setmainfont{Roboto}[Path=fonts/, Extension=.ttf, UprightFont=*-Regular, BoldFont=*-Bold, ItalicFont=*-Italic, BoldItalicFont=*-BoldItalic]
+  \setsansfont{Roboto}[Path=fonts/, Extension=.ttf, UprightFont=*-Regular, BoldFont=*-Bold, ItalicFont=*-Italic, BoldItalicFont=*-BoldItalic]
   \setmonofont{Menlo}
   % \lr / \rl are no-ops in English mode (xepersian is not loaded).
   \newcommand{\lr}[1]{#1}
@@ -48,8 +50,8 @@
   % Noto Sans Arabic is a single-weight file with no distinct bold face,
   % so \bfseries would otherwise render identically to regular text.
   % FakeBold synthetically embolens strokes so bold is actually visible.
-  \settextfont[UprightFont=*, BoldFont=*, BoldFeatures={FakeBold=2.5}, ItalicFont=*, ItalicFeatures={FakeSlant=0.2}, BoldItalicFont=*, BoldItalicFeatures={FakeBold=2.5,FakeSlant=0.2}]{Noto Sans Arabic}
-  \setlatintextfont{Roboto}
+  \settextfont[UprightFont=*, BoldFont=*, BoldFeatures={FakeBold=1.8}, ItalicFont=*, ItalicFeatures={FakeSlant=0.2}, BoldItalicFont=*, BoldItalicFeatures={FakeBold=1.8,FakeSlant=0.2}]{Noto Sans Arabic}
+  \setlatintextfont{Roboto}[Path=fonts/, Extension=.ttf, UprightFont=*-Regular, BoldFont=*-Bold, ItalicFont=*-Italic, BoldItalicFont=*-BoldItalic]
   \setdigitfont{Noto Sans Arabic}
 \fi
 
@@ -63,7 +65,7 @@
 \newcommand*{\sectionstyle}[1]{{\fontsize{16pt}{20pt}\selectfont\bodyfont\bfseries\color{awesome}#1}}
 \newcommand*{\subsectionstyle}[1]{{\fontsize{12pt}{15pt}\selectfont\bodyfont\bfseries\color{awesome}#1}}
 \newcommand*{\entrytitlestyle}[1]{{\fontsize{11pt}{13.5pt}\selectfont\bodyfont\fontseries{b}\selectfont\color{darktext}#1}}
-\newcommand*{\entrypositionstyle}[1]{{\fontsize{8.5pt}{11pt}\selectfont\bodyfont\color{graytext}#1}}
+\newcommand*{\entrypositionstyle}[1]{{\fontsize{8.5pt}{11pt}\selectfont\bodyfont\color{text}#1}}
 \newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{10pt}\selectfont\bodyfont\color{graytext}#1}}
 \newcommand*{\entrylocationstyle}[1]{{\fontsize{8.5pt}{11pt}\selectfont\bodyfont\bfseries\color{awesome}#1}}
 \newcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{12.5pt}\selectfont\bodyfont\color{text}#1}}
