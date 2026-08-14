@@ -45,8 +45,10 @@
 \if@cvenglish
   % English LTR mode: Roboto is the main font (already set above).
 \else
-  % Noto Sans Arabic is a variable font (single file, all weights).
-  \settextfont[UprightFont=*, BoldFont=*, ItalicFont=*, BoldItalicFont=*]{Noto Sans Arabic}
+  % Noto Sans Arabic is a single-weight file with no distinct bold face,
+  % so \bfseries would otherwise render identically to regular text.
+  % FakeBold synthetically embolens strokes so bold is actually visible.
+  \settextfont[UprightFont=*, BoldFont=*, BoldFeatures={FakeBold=2.5}, ItalicFont=*, ItalicFeatures={FakeSlant=0.2}, BoldItalicFont=*, BoldItalicFeatures={FakeBold=2.5,FakeSlant=0.2}]{Noto Sans Arabic}
   \setlatintextfont{Roboto}
   \setdigitfont{Noto Sans Arabic}
 \fi
@@ -63,7 +65,7 @@
 \newcommand*{\entrytitlestyle}[1]{{\fontsize{11pt}{13.5pt}\selectfont\bodyfont\fontseries{b}\selectfont\color{darktext}#1}}
 \newcommand*{\entrypositionstyle}[1]{{\fontsize{8.5pt}{11pt}\selectfont\bodyfont\color{graytext}#1}}
 \newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{10pt}\selectfont\bodyfont\color{graytext}#1}}
-\newcommand*{\entrylocationstyle}[1]{{\fontsize{8.5pt}{11pt}\selectfont\bodyfont\color{awesome}#1}}
+\newcommand*{\entrylocationstyle}[1]{{\fontsize{8.5pt}{11pt}\selectfont\bodyfont\bfseries\color{awesome}#1}}
 \newcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{12.5pt}\selectfont\bodyfont\color{text}#1}}
 \newcommand*{\skilltypestyle}[1]{{\fontsize{9.5pt}{12pt}\selectfont\bodyfont\bfseries\color{darktext}#1}}
 \newcommand*{\skillsetstyle}[1]{{\fontsize{9pt}{12pt}\selectfont\bodyfont\color{text}#1}}
