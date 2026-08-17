@@ -15,6 +15,8 @@
 \RequirePackage{enumitem}
 \RequirePackage{ragged2e}
 \RequirePackage{hyperref}
+\RequirePackage{tikz}
+\RequirePackage{graphicx}
 \RequirePackage{fontawesome5}
 \if@cvenglish
   % English LTR mode: no xepersian, so bidi never reverses the layout.
@@ -53,7 +55,23 @@
   \setlatintextfont{Roboto}
   \setdigitfont{Noto Sans Arabic}
 \fi
+%----------------------------------------------------------------------------------------
+% BISMILLAH TOP BORDER
+%----------------------------------------------------------------------------------------
 
+\newcommand{\makebismillah}{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[
+      anchor=north,
+      yshift=-1mm
+    ] at (current page.north)
+    {%
+      \includegraphics[
+        width=0.1\paperwidth
+      ]{assets/bismillah_text_green.png}%
+    };
+  \end{tikzpicture}%
+}
 \newcommand*{\headerfont}{\rmfamily}\newcommand*{\headerfontlight}{\rmfamily}
 \newcommand*{\footerfont}{\rmfamily}\newcommand*{\bodyfont}{\rmfamily}\newcommand*{\bodyfontlight}{\rmfamily}
 \newcommand*{\headerfirstnamestyle}[1]{{\fontsize{30pt}{34pt}\selectfont\headerfont\bfseries\color{awesome}#1}}
